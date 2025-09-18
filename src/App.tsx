@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { 
-  Calendar, 
-  Shield, 
-  Users, 
-  Settings, 
-  BarChart3, 
-  Search, 
-  Menu, 
+import {
+  Calendar,
+  Users,
+  BarChart3,
+  Menu,
   X,
-  ChevronRight,
   Check,
   Building,
   UserCheck,
   ShieldCheck,
-  Headphones
+  Headphones,
+  FileText,
+  Briefcase,
+  MessageSquareText,
+  PieChart,
+  Cloud
 } from 'lucide-react';
 
 interface Feature {
@@ -37,42 +38,65 @@ function App() {
 
   const features: Feature[] = [
     {
-      icon: <Calendar className="w-8 h-8" />,
-      title: "Client Appointment Scheduling",
-      description: "Streamlined client meeting scheduling with instant persistence and validation",
-      details: "Dedicated appointment form that captures client information, validates requests, and writes to the case database with comprehensive test coverage for legal consultations."
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8" />,
-      title: "Legal Dashboard",
-      description: "Comprehensive case oversight and management interface",
-      details: "Protected dashboard view for legal professionals with case tracking, deadline monitoring, and secure route protection for sensitive legal data."
-    },
-    {
-      icon: <Settings className="w-8 h-8" />,
-      title: "Secure Account Management", 
-      description: "Complete attorney and staff account lifecycle with enhanced security",
-      details: "Registration, password resets, profile updates, and password changes with comprehensive test coverage designed for legal practice security requirements."
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Two-Factor Authentication",
-      description: "Attorney-grade security with 2FA and recovery codes",
-      details: "Active 2FA with confirmation and recovery codes, tested enabling/disabling flows and code regeneration to protect sensitive client information."
+      icon: <Briefcase className="w-8 h-8" />,
+      title: "Case Management and Statistics",
+      description: "Access every matter from anywhere with real-time case progress and analytics.",
+      details: "Carry the entire history of a case in your pocket. Track key milestones, monitor upcoming court visits, and review statistics without sorting through piles of paperwork."
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Law Firm Collaboration",
-      description: "Complete legal team management and case collaboration",
-      details: "Full team management with attorney and staff invitations, tested team creation, member invitation, and cancellation workflows for law firm operations."
+      title: "Client Management",
+      description: "Know every client in detail and respond faster to their needs.",
+      details: "Search by name or ID and instantly review intake records, historical notes, communications, and linked matters to deliver the service every client deserves."
     },
     {
-      icon: <Search className="w-8 h-8" />,
-      title: "Legal Workflow UI",
-      description: "Case search, deadline notifications, and quick-access legal tools",
-      details: "Integrated top bar with global case search, theme toggling, deadline notifications, and quick-access menus for enhanced legal workflow efficiency."
+      icon: <FileText className="w-8 h-8" />,
+      title: "Document Management",
+      description: "Centralize filings, evidence, and correspondence in a secure digital archive.",
+      details: "Legistant links every document to the right case so updates, pleadings, and confidential files are always organized and available to the right people."
+    },
+    {
+      icon: <Calendar className="w-8 h-8" />,
+      title: "Task Management Services",
+      description: "Stay on top of appointments, deadlines, and daily workflows.",
+      details: "Automated reminders, synchronized schedules, and mobile alerts make sure you never miss a court date, filing deadline, or client meeting again."
+    },
+    {
+      icon: <PieChart className="w-8 h-8" />,
+      title: "Finance Management Services",
+      description: "Bill accurately and generate invoices in seconds.",
+      details: "Accumulate time, expenses, and disbursements automatically. Produce statements, invoices, and reports with a click so you can focus on practicing law."
+    },
+    {
+      icon: <MessageSquareText className="w-8 h-8" />,
+      title: "Communicate with Casey",
+      description: "Stay connected to your practice through our secure AI assistant.",
+      details: "Casey meets you in Telegram, Messenger, Slack, Android, iOS, or inside the app to answer questions and complete quick tasks wherever you are."
     }
   ];
+
+  const integrations = {
+    storage: [
+      'Secure Evidence Management System',
+      'Box',
+      'Dropbox',
+      'Google Drive',
+      'OneDrive'
+    ],
+    finance: [
+      'QuickBooks Online live synchronization',
+      'Import existing accounting data',
+      'Automated updates as matters progress'
+    ],
+    casey: [
+      'Facebook Messenger',
+      'Telegram',
+      'Slack',
+      'Android',
+      'iOS',
+      'In-app assistant'
+    ]
+  };
 
   const targetAudiences = [
     {
@@ -141,26 +165,26 @@ function App() {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative container mx-auto px-6 py-24 lg:py-32">
           <div className="max-w-4xl mx-auto text-center">
-            <img 
-              src="https://app.legistant.com/img/largeLogobothv.png" 
-              alt="Legistant Logo" 
+            <img
+              src="https://app.legistant.com/img/largeLogobothv.png"
+              alt="Legistant Logo"
               className="h-16 w-auto mx-auto mb-8"
             />
             <h1 className="text-5xl lg:text-7xl font-bold mb-6">
-              Streamline Your Legal
-              <span className="text-yellow-400 block">Practice</span>
+              Digitalize Your
+              <span className="text-yellow-400 block">Legal Practice</span>
             </h1>
             <p className="text-xl lg:text-2xl text-gray-300 mb-12 leading-relaxed">
-              Complete legal case management and law firm collaboration solution with attorney-grade security
+              Legistant is the cloud-based legal practice management system that keeps every case, client, document, and invoice right where you need it—with the freedom to work securely from anywhere.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a 
+              <a
                 href="https://app.legistant.com/login"
                 className="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 Get Started Now
               </a>
-              <button 
+              <button
                 onClick={() => setCurrentPage('features')}
                 className="border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300"
               >
@@ -179,7 +203,7 @@ function App() {
               Powerful Features
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to manage cases, clients, and law firm operations in one comprehensive legal platform
+              Manage casework, communications, and firm finances with automation, insights, and the security your clients expect.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -234,13 +258,13 @@ function App() {
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-            Join thousands of businesses already using Legistant to streamline their operations
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a 
-              href="https://app.legistant.com/login"
-              className="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105"
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              Join the growing community of Sri Lankan legal professionals transforming their practice with Legistant.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <a
+                href="https://app.legistant.com/login"
+                className="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105"
             >
               Start Free Trial
             </a>
@@ -261,16 +285,17 @@ function App() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-black mb-6">
-            Complete Legal Management Features
+            Features and Integrations
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive legal practice management tools designed for modern law firms
+            Legistant brings together client intake, case management, evidence storage, and billing in a single cloud platform.
           </p>
         </div>
-        <div className="space-y-12">
+
+        <div className="space-y-12 mb-16">
           {features.map((feature, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`flex flex-col lg:flex-row items-center gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
             >
               <div className="lg:w-1/2">
@@ -287,6 +312,138 @@ function App() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-12 mb-16">
+          <div className="bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100">
+            <h3 className="text-2xl font-bold text-black mb-4">Client Intake</h3>
+            <p className="text-gray-600 mb-4">
+              Capture every client detail the moment they walk in. Intake records power search, billing, and communications throughout each case.
+            </p>
+            <ul className="space-y-2 text-gray-500">
+              <li className="flex items-start"><Check className="w-5 h-5 text-yellow-500 mr-3 mt-1" />Record comprehensive client information</li>
+              <li className="flex items-start"><Check className="w-5 h-5 text-yellow-500 mr-3 mt-1" />Link clients to active and historical matters</li>
+              <li className="flex items-start"><Check className="w-5 h-5 text-yellow-500 mr-3 mt-1" />Empower teams with up-to-date client history</li>
+            </ul>
+          </div>
+          <div className="bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100">
+            <h3 className="text-2xl font-bold text-black mb-4">Track Communications</h3>
+            <p className="text-gray-600 mb-4">
+              Log every touchpoint between clients and lawyers, whether it is a call, message, or quick note from Casey.
+            </p>
+            <ul className="space-y-2 text-gray-500">
+              <li className="flex items-start"><Check className="w-5 h-5 text-yellow-500 mr-3 mt-1" />Document discussions inside secure matter files</li>
+              <li className="flex items-start"><Check className="w-5 h-5 text-yellow-500 mr-3 mt-1" />Convert billable communications into invoices</li>
+              <li className="flex items-start"><Check className="w-5 h-5 text-yellow-500 mr-3 mt-1" />Share updates with clients through the portal</li>
+            </ul>
+          </div>
+          <div className="bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100">
+            <h3 className="text-2xl font-bold text-black mb-4">Evidence Management</h3>
+            <p className="text-gray-600 mb-4">
+              Secure encrypted evidence on resilient cloud infrastructure and manage permissions with confidence.
+            </p>
+            <ul className="space-y-2 text-gray-500">
+              <li className="flex items-start"><Check className="w-5 h-5 text-yellow-500 mr-3 mt-1" />Amazon-hosted storage hardened for legal data</li>
+              <li className="flex items-start"><Check className="w-5 h-5 text-yellow-500 mr-3 mt-1" />Granular controls over who can view or edit evidence</li>
+              <li className="flex items-start"><Check className="w-5 h-5 text-yellow-500 mr-3 mt-1" />Chain-of-custody tracking for sensitive files</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-black text-white rounded-3xl p-12 mb-16">
+          <div className="grid lg:grid-cols-3 gap-12">
+            <div>
+              <h3 className="text-2xl font-bold mb-4 flex items-center"><Cloud className="w-6 h-6 text-yellow-400 mr-3" />Storage Providers</h3>
+              <ul className="space-y-2 text-gray-300">
+                {integrations.storage.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-4 flex items-center"><BarChart3 className="w-6 h-6 text-yellow-400 mr-3" />Finance Integrations</h3>
+              <ul className="space-y-2 text-gray-300">
+                {integrations.finance.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-4 flex items-center"><MessageSquareText className="w-6 h-6 text-yellow-400 mr-3" />Casey Everywhere</h3>
+              <ul className="space-y-2 text-gray-300">
+                {integrations.casey.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gray-50 rounded-3xl p-12 border border-gray-100">
+          <h3 className="text-3xl font-bold text-black mb-6">Legistant's Security Promise</h3>
+          <div className="grid lg:grid-cols-3 gap-12 text-gray-600">
+            <div>
+              <h4 className="font-semibold text-black mb-3">Continuous Vigilance</h4>
+              <p>We continually review and update Legistant's codebase, monitor for vulnerabilities, and apply the latest cybersecurity practices to keep your data safe.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-black mb-3">Privacy by Design</h4>
+              <p>Legistant operates in accordance with GDPR principles, meeting our responsibilities as both data controller and processor for sensitive legal information.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-black mb-3">Trusted Team</h4>
+              <p>From access policies and two-factor authentication to rigorous employee training, we standardize security protocols so only authorized professionals reach your data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
+  const renderAbout = () => (
+    <section className="py-20 bg-white min-h-screen">
+      <div className="container mx-auto px-6 max-w-5xl">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-6">About Legistant</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Digitalizing the legal profession with technology crafted alongside Sri Lankan legal experts.
+          </p>
+        </div>
+
+        <div className="space-y-12 text-gray-600 leading-relaxed">
+          <div className="bg-gray-50 rounded-2xl p-10 border border-gray-100">
+            <h3 className="text-2xl font-bold text-black mb-4">Our Vision: Digitalize Professions</h3>
+            <p>
+              Since the incorporation of White Star Web Solutions, we have delivered transformative web projects. The search for our own product led us to the legal industry, where a personal need for legal consultation highlighted how inefficient manual processes can be.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-10 border border-gray-100 shadow-sm">
+            <p>
+              We realized that modernizing legal practice management could save clients and lawyers time while opening new opportunities for revenue. Our research showed that legal practice management systems are thriving in developed and developing countries alike, and Sri Lanka was ready to embrace this change.
+            </p>
+            <p className="mt-6">
+              After four years of research, interviews, feedback, and rigorous testing with Sri Lankan legal professionals, we built Legistant—a localized, cloud-based solution that lets firms bring their physical practice into the cloud and work from anywhere.
+            </p>
+          </div>
+
+          <div className="bg-gray-50 rounded-2xl p-10 border border-gray-100">
+            <p>
+              Legistant allows lawyers to securely store details about every client case, whether it is a court matter or transactional work. Case updates form a chronological timeline to keep clients informed, while reminders ensure you never miss a deadline or statute of limitation.
+            </p>
+            <p className="mt-6">
+              Scheduling appointments and managing overlapping commitments are simplified with our task management system. Yet Legistant is more than a task manager—it is your secure document and evidence hub, protecting confidential information with strong encryption and controlled access.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-10 border border-gray-100 shadow-sm">
+            <p>
+              We understand that a lawyer's day is packed with consultations, court visits, and research. Manual workflows slow everyone down. Legistant streamlines daily tasks with ready-made forms, digital note taking, and mobile access so you can maximize every hour of your day.
+            </p>
+            <p className="mt-6">
+              Whether it is managing evidence, collaborating with clients, or getting instant support from Casey, Legistant empowers legal professionals to focus on advocacy while technology takes care of operations.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -405,7 +562,13 @@ function App() {
               >
                 Features
               </button>
-              <button 
+              <button
+                onClick={() => setCurrentPage('about')}
+                className={`hover:text-yellow-400 transition-colors ${currentPage === 'about' ? 'text-yellow-400' : ''}`}
+              >
+                About
+              </button>
+              <button
                 onClick={() => setCurrentPage('pricing')}
                 className={`hover:text-yellow-400 transition-colors ${currentPage === 'pricing' ? 'text-yellow-400' : ''}`}
               >
@@ -446,7 +609,13 @@ function App() {
                 >
                   Features
                 </button>
-                <button 
+                <button
+                  onClick={() => { setCurrentPage('about'); setMobileMenuOpen(false); }}
+                  className={`text-left hover:text-yellow-400 transition-colors ${currentPage === 'about' ? 'text-yellow-400' : ''}`}
+                >
+                  About
+                </button>
+                <button
                   onClick={() => { setCurrentPage('pricing'); setMobileMenuOpen(false); }}
                   className={`text-left hover:text-yellow-400 transition-colors ${currentPage === 'pricing' ? 'text-yellow-400' : ''}`}
                 >
@@ -467,6 +636,7 @@ function App() {
       {/* Page Content */}
       {currentPage === 'home' && renderHome()}
       {currentPage === 'features' && renderFeatures()}
+      {currentPage === 'about' && renderAbout()}
       {currentPage === 'pricing' && renderPricing()}
 
       {/* Footer */}
